@@ -1,7 +1,7 @@
 from agent.aws_agent import AWSAgent
 
 def main():
-    agent = AWSAgent(region_name="eu-north-1")
+    agent = AWSAgent(region_name="eu-west-3")
     print("AWS Agent (Available)")
 
     while True:
@@ -16,3 +16,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
