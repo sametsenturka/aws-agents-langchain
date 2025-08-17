@@ -15,7 +15,7 @@ class LambdaListFunctionsTool(BaseTool):
     args_schema: Type[BaseModel] = NoInputSchema
     _lambda: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-north-1"):
+    def __init__(self, region_name: str = "eu-west-3"):
         super().__init__()
         self._lambda = boto3.client("lambda", region_name=region_name)
 
@@ -42,7 +42,7 @@ class LambdaInvokeFunctionTool(BaseTool):
     args_schema: Type[BaseModel] = LambdaInvokeInput
     _lambda_client: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-north-1"):
+    def __init__(self, region_name: str = "eu-west-3"):
         super().__init__()
         self._lambda_client = boto3.client("lambda", region_name=region_name)
 
@@ -62,3 +62,4 @@ class LambdaInvokeFunctionTool(BaseTool):
             return json.dumps(result, indent=2)
         except Exception as e:
             return f"Error invoking Lambda: {str(e)}"
+
