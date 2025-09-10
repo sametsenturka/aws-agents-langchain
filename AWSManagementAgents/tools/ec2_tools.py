@@ -15,7 +15,7 @@ class EC2ListInstancesTool(BaseTool):
     args_schema: Type[BaseModel] = EC2ListInstancesInput
     _ec2: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-west-3"):
+    def __init__(self, region_name: str = "eu-north-1"):
         super().__init__()
         self._ec2 = boto3.client("ec2", region_name=region_name)
 
@@ -49,7 +49,7 @@ class EC2StartInstanceTool(BaseTool):
     args_schema: Type[BaseModel] = EC2StartInstanceInput
     _ec2: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-west-3"):
+    def __init__(self, region_name: str = "eu-north-1"):
         super().__init__()
         self._ec2 = boto3.client("ec2", region_name=region_name)
 
@@ -70,7 +70,7 @@ class EC2StopInstanceTool(BaseTool):
     args_schema: Type[BaseModel] = EC2StopInstanceInput
     _ec2: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-west-3"):
+    def __init__(self, region_name: str = "eu-north-1"):
         super().__init__()
         self._ec2 = boto3.client("ec2", region_name=region_name)
 
@@ -80,4 +80,5 @@ class EC2StopInstanceTool(BaseTool):
             return json.dumps(response, default=str, indent=2)
         except Exception as e:
             return f"Error stopping instance: {str(e)}"
+
 
