@@ -15,7 +15,7 @@ class S3ListBucketsTool(BaseTool):
     args_schema: Type[BaseModel] = NoInputSchema
     _s3: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-west-3"):
+    def __init__(self, region_name: str = "eu-north-1"):
         super().__init__()
         self._s3 = boto3.client("s3", region_name=region_name)
 
@@ -40,7 +40,7 @@ class S3UploadFileTool(BaseTool):
     args_schema: Type[BaseModel] = S3UploadFileInput
     _s3: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-west-3"):
+    def __init__(self, region_name: str = "eu-north-1"):
         super().__init__()
         self._s3 = boto3.client("s3", region_name=region_name)
 
@@ -64,7 +64,7 @@ class S3DownloadFileTool(BaseTool):
     args_schema: Type[BaseModel] = S3DownloadFileInput
     _s3: Any = PrivateAttr()
 
-    def __init__(self, region_name: str = "eu-west-3"):
+    def __init__(self, region_name: str = "eu-north-1"):
         super().__init__()
         self._s3 = boto3.client("s3", region_name=region_name)
 
@@ -74,4 +74,5 @@ class S3DownloadFileTool(BaseTool):
             return f"Downloaded s3://{bucket_name}/{key} to {file_path}"
         except Exception as e:
             return f"Error downloading file: {str(e)}"
+
 
